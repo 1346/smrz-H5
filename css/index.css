@@ -34,11 +34,11 @@ body,.mui-content {
     height:auto;
     font-size:0.28rem;
 }
-.mui-icon-clear:before, .mui-icon-close-filled:before {
-    content:'';
-    background:url("../images/delete.png") no-repeat 100%;
-    width:inherit;
-}
+/*.mui-icon-clear:before, .mui-icon-close-filled:before {*/
+    /*content:'';*/
+    /*background:url("../images/delete.png") no-repeat 100%;*/
+    /*width:inherit;*/
+/*}*/
 .mui-icon-clear {
     width:0.34rem !important;
     height:0.34rem !important;
