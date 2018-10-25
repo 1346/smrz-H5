@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>实名认证</title>
+    <link rel="stylesheet" href="./css/mui.min.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <script type="text/javascript" src="https://htxq.oss-cn-beijing.aliyuncs.com/resources/js/vue.min.js"></script>
+    <script type="text/javascript" src="./js/public.js"></script>
+    <script>
+        var now = new Date().getTime();
+        document.write('<script language="javascript" src="https://htxq.oss-cn-beijing.aliyuncs.com/resources/js/jquery-2.0.3.min.js?t=' + now + '"><\/script\>');
+    </script>
+    <script type="text/javascript" src="./js/mui.min.js"></script>
+    <script>
+        mui.init();
+    </script>
+</head>
+<body>
+<section id="main">
+    <div class="mui-content">
+        <div class="real-header">
+            *本活动为实名制活动，如填写有误，您将无法参与所报名的活动。为保障您的自身利益，请仔细核对身份证信息。
+        </div>
+        <form enctype="multipart/form-data" class="mui-input-group">
+            <div class="mui-input-row">
+                <label><span class="real-check">*</span>真实姓名</label>
+                <input type="text" class="mui-input-clear" placeholder="输入您的真实姓名">
+            </div>
+            <div class="mui-input-row">
+                <label><span class="real-check">*</span>身份证号</label>
+                <input type="text" class="mui-input-clear" placeholder="输入您的身份证号">
+            </div>
+            <div class="mui-input-row">
+                <label><span class="real-check">*</span>确认身份证号</label>
+                <input type="text" class="mui-input-clear" placeholder="确认您的身份证号">
+            </div>
+            <div class="mui-button-row">
+                <button type="button" class="mui-btn mui-btn-primary" >确认</button>
+                <button type="button" class="mui-btn mui-btn-danger" >取消</button>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>

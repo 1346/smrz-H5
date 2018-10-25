@@ -1,0 +1,46 @@
+body,.mui-content {
+    background-color:#f4f4f4;
+}
+.mui-input-group .mui-input-row:after {
+    left:0;
+    background-color:#dcdcdc;
+}
+.real-header {
+    padding:0.26rem 0.3rem;
+    color:#777777;
+    font-size:0.24rem;
+}
+.real-check {
+    color:#d42020;
+    margin-right:0.1rem;
+    margin-left:0.3rem;
+}
+.mui-input-group .mui-input-row {
+    height:auto;
+}
+.mui-input-row label {
+    color:#323232;
+    line-height:1;
+    padding:0;
+}
+.mui-input-row {
+    font-size:0.28rem;
+    padding:0.3rem 0;
+}
+.mui-input-row input {
+    line-height:1;
+    color:#777777;
+    padding:0 0.3rem 0 0;
+    height:auto;
+    font-size:0.28rem;
+}
+.mui-icon-clear:before, .mui-icon-close-filled:before {
+    content:'';
+    background:url("../images/delete.png") no-repeat 100%;
+    width:inherit;
+}
+.mui-icon-clear {
+    width:0.34rem !important;
+    height:0.34rem !important;
+
+}
