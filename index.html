@@ -36,12 +36,41 @@
                 <label><span class="real-check">*</span>确认身份证号</label>
                 <input type="text" class="mui-input-clear" placeholder="确认您的身份证号">
             </div>
-            <div class="mui-button-row">
-                <button type="button" class="mui-btn mui-btn-primary" >确认</button>
-                <button type="button" class="mui-btn mui-btn-danger" >取消</button>
+            <div class="real-empty"></div>
+            <div class="real-upload">
+                <div class="real-upload-header">
+                    <span class="real-check">*</span><span>上传身份证正面照片</span>
+                    <div class="real-upload-header-tip">温馨提示：请拍照上传清晰完整的“人像”面图片。</div>
+                </div>
+                <div class="real-upload-input">
+                    <input type="file" onchange="getSrc(this)" v-if="!imgSrc" />
+                    <img class="upload-image" :src="imgSrc" alt="" v-if="imgSrc">
+                    <img class="upload-delete" src="./images/img-delete.png" alt="" v-if="imgSrc" @tap="deleteImg" />
+                </div>
+            </div>
+            <div class="real-service">
+                <span class="checked" :class="{'is-checked':isCheck,'no-checked':!isCheck}" @tap="isCheck = !isCheck"></span><span>我已同意</span><span style="color:#c1a152">《实名认证与隐私安全保护》</span><span>协议</span>
+            </div>
+            <div class="real-submit">
+                <div class="mui-btn">确认提交</div>
             </div>
         </form>
+        <div class="real-footer"></div>
     </div>
 </section>
+<script>
+    function getSrc(val){
+        const file = val.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                var txt = event.target.result;
+                vm.imgSrc = txt;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+<script type="text/javascript" src="./js/index.js"></script>
 </body>
 </html>
