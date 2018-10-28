@@ -1,26 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>实名认证</title>
-    <link rel="stylesheet" href="./css/mui.min.css" />
-    <link rel="stylesheet" href="./css/index.css" />
+    <title>信用分</title>
+    <link rel="stylesheet" href="../css/mui.min.css" />
+    <link rel="stylesheet" href="../css/index.css" />
     <script type="text/javascript" src="https://htxq.oss-cn-beijing.aliyuncs.com/resources/js/vue.min.js"></script>
-    <script type="text/javascript" src="./js/public.js"></script>
+    <script type="text/javascript" src="../js/public.js"></script>
     <script>
         var now = new Date().getTime();
         document.write('<script language="javascript" src="https://htxq.oss-cn-beijing.aliyuncs.com/resources/js/jquery-2.0.3.min.js?t=' + now + '"><\/script\>');
     </script>
-    <script type="text/javascript" src="./js/mui.min.js"></script>
+    <script type="text/javascript" src="../js/mui.min.js"></script>
     <script>
         mui.init();
     </script>
-</head>
-<body>
-<section id="main">
+    <style>
+        body {
+            background-color: #ffffff;
+        }
 
-</section>
-<script type="text/javascript" src="./js/index.js"></script>
+        .header {
+            width: 100%;
+            height: 3.25rem;
+            background-color: #e1b95f;
+            text-align: center;
+            padding: 0.92rem 0;
+        }
+
+        .header-num {
+            color: #786433;
+            font-size: 0.86rem;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .header-txt {
+            color: #786433;
+            font-size: 0.3rem;
+            line-height: 1;
+            margin-top: 0.28rem;
+        }
+
+        .rules {
+            margin-top: 0.34rem;
+            margin-bottom: 0.24rem;
+            padding: 0 0.3rem;
+        }
+
+        .rules-header {
+            color: #323232;
+            font-size: 0.3rem;
+            font-weight: bold;
+            margin-bottom: 0.24rem;
+        }
+
+        .rules-content {
+            color: #777777;
+            font-size: 0.26rem;
+            line-height: 0.4rem;
+        }
+
+        .empty {
+            width: 100%;
+            height: 0.2rem;
+            background-color: #f4f4f4;
+            border-top: 1px solid #dcdcdc;
+            border-bottom: 1px solid #dcdcdc;
+        }
+
+        .detail-list {
+            margin-top: 0.34rem;
+            padding: 0 0.3rem;
+            margin-bottom: 0.24rem;
+        }
+
+        .detail-header {
+            color: #323232;
+            font-size: 0.3rem;
+            font-weight: bold;
+            margin-bottom: 0.24rem;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .clearfix:after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0;
+        }
+        .list {
+            color: #979797;
+            font-size: 0.26rem;
+            line-height: 1;
+            margin-bottom: 0.14rem;
+        }
+        .list-num {
+            color: #cb5353;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="main">
+        <div class="header">
+            <div class="header-num">11</div>
+            <div class="header-txt">您当前的信用评价分良好</div>
+        </div>
+        <div class="rules">
+            <div class="rules-header">评分规则</div>
+            <div class="rules-content">
+                <div>每个账户的默认信用分数为满分12分。</div>
+                <div>本APP报名的活动均需参加，这是基本的契约精神，但如您届时无法参加。则需扣除对应的信用分。</div>
+                <div>当信用分低于0的时候，则您将无法使用本APP的部分功能。</div>
+                <div>信用分每年的12月31日将会重置恢复12分。</div>
+            </div>
+        </div>
+        <div class="empty"></div>
+        <div class="detail-list">
+            <div class="detail-header">信用扣分明细表</div>
+            <div v-for="(item, index) in detailList" :key="index" class="clearfix list">
+                <span class="fl">{{ item.txt }}</span>
+                <span class="fr list-num">- {{ item.num }}分</span>
+            </div>
+        </div>
+    </section>
+    <script>
+        var vm = new Vue({
+            el: '#main',
+            data: {
+                detailList: [
+                    { txt: '2019.01.01 xxxxxx活动', num: 1 },
+                    { txt: '2019.01.01 xxxxxx活动', num: 1 },
+                    { txt: '2019.01.01 xxxxxx活动', num: 1 },
+                    { txt: '2019.01.01 xxxxxx活动', num: 1 },
+                    { txt: '2019.01.01 xxxxxx活动', num: 1 },
+                    { txt: '2019.01.01 xxxxxx活动', num: 1 },
+                    { txt: '2019.01.01 xxxxxx活动', num: 1 },
+                ]
+            },
+        })
+    </script>
 </body>
+
 </html>
