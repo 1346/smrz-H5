@@ -16,9 +16,11 @@
     <script>
         mui.init();
     </script>
+    <!--<script src="https://cdnm3.17shanyuan.com/static/js/debug/eruda.js"></script>-->
+    <!--<script>eruda.init();</script>-->
 </head>
 <body>
-<section id="main">
+<section id="main" v-cloak>
     <div class="mui-content">
         <div class="real-header">
             *本活动为实名制活动，如填写有误，您将无法参与所报名的活动。为保障您的自身利益，请仔细核对身份证信息。
@@ -26,15 +28,15 @@
         <form enctype="multipart/form-data" class="mui-input-group">
             <div class="mui-input-row">
                 <label><span class="real-check">*</span>真实姓名</label>
-                <input type="text" class="mui-input-clear" placeholder="输入您的真实姓名">
+                <input type="text" class="mui-input-clear name" placeholder="输入您的真实姓名">
             </div>
             <div class="mui-input-row">
                 <label><span class="real-check">*</span>身份证号</label>
-                <input type="text" class="mui-input-clear" placeholder="输入您的身份证号">
+                <input type="text" class="mui-input-clear cardId" maxlength="18" placeholder="输入您的身份证号">
             </div>
             <div class="mui-input-row">
                 <label><span class="real-check">*</span>确认身份证号</label>
-                <input type="text" class="mui-input-clear" placeholder="确认您的身份证号">
+                <input type="text" class="mui-input-clear reCardId" maxlength="18" placeholder="确认您的身份证号">
             </div>
             <div class="real-empty"></div>
             <div class="real-upload">
@@ -43,7 +45,7 @@
                     <div class="real-upload-header-tip">温馨提示：请拍照上传清晰完整的“人像”面图片。</div>
                 </div>
                 <div class="real-upload-input">
-                    <input type="file" onchange="getSrc(this)" v-if="!imgSrc" />
+                    <input type="file" name="file" onchange="getSrc(this)" v-if="!imgSrc" id="file" />
                     <img class="upload-image" :src="imgSrc" alt="" v-if="imgSrc">
                     <img class="upload-delete" src="./images/img-delete.png" alt="" v-if="imgSrc" @tap="deleteImg" />
                 </div>
@@ -52,15 +54,16 @@
                 <span class="checked" :class="{'is-checked':isCheck,'no-checked':!isCheck}" @tap="isCheck = !isCheck"></span><span>我已同意</span><span style="color:#c1a152">《实名认证与隐私安全保护》</span><span>协议</span>
             </div>
             <div class="real-submit">
-                <div class="mui-btn">确认提交</div>
+                <div class="mui-btn" @tap="submit">确认提交</div>
             </div>
         </form>
-        <div class="real-footer"></div>
+        <!--<div class="real-footer"></div>-->
     </div>
 </section>
 <script>
     function getSrc(val){
         const file = val.files[0];
+        vm.imgData = file;
         if (file) {
             var reader = new FileReader();
             reader.onload = function (event) {
@@ -71,6 +74,7 @@
         }
     }
 </script>
+<script type="text/javascript" src="./js/login_public_750.js"></script>
 <script type="text/javascript" src="./js/index.js"></script>
 </body>
 </html>

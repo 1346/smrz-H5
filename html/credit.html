@@ -60,7 +60,12 @@
         .rules-content {
             color: #777777;
             font-size: 0.26rem;
-            line-height: 0.4rem;
+        }
+
+        .rules-content div {
+            line-height:0.31rem;
+            margin-bottom:0.14rem;
+            font-size:0.26rem;
         }
 
         .empty {
@@ -113,10 +118,14 @@
 </head>
 
 <body>
-    <section id="main">
+    <section id="main" v-cloak>
         <div class="header">
-            <div class="header-num">11</div>
-            <div class="header-txt">您当前的信用评价分良好</div>
+            <div class="header-num">{{score}}</div>
+            <div class="header-txt" v-if="score == 12">您当前的信用评分非常好</div>
+            <div class="header-txt" v-if="score == 11 || score == 10">您当前的信用评分良好</div>
+            <div class="header-txt" v-if="score >= 6 && score <= 9">您当前的信用评分一般</div>
+            <div class="header-txt" v-if="score >= 1 && score <= 5">您当前的信用评分较差</div>
+            <div class="header-txt" v-if="score == 0">您已无信用评分可用</div>
         </div>
         <div class="rules">
             <div class="rules-header">评分规则</div>
@@ -131,8 +140,8 @@
         <div class="detail-list">
             <div class="detail-header">信用扣分明细表</div>
             <div v-for="(item, index) in detailList" :key="index" class="clearfix list">
-                <span class="fl">{{ item.txt }}</span>
-                <span class="fr list-num">- {{ item.num }}分</span>
+                <span class="fl">{{ item.timestamp }}{{ item.trainTitle }}</span>
+                <span class="fr list-num">{{ item.score }}</span>
             </div>
         </div>
     </section>
@@ -140,16 +149,36 @@
         var vm = new Vue({
             el: '#main',
             data: {
-                detailList: [
-                    { txt: '2019.01.01 xxxxxx活动', num: 1 },
-                    { txt: '2019.01.01 xxxxxx活动', num: 1 },
-                    { txt: '2019.01.01 xxxxxx活动', num: 1 },
-                    { txt: '2019.01.01 xxxxxx活动', num: 1 },
-                    { txt: '2019.01.01 xxxxxx活动', num: 1 },
-                    { txt: '2019.01.01 xxxxxx活动', num: 1 },
-                    { txt: '2019.01.01 xxxxxx活动', num: 1 },
-                ]
+                score: undefined,
+                detailList: []
             },
+            created: function() {
+                this.getList();
+            },
+            methods:{
+              getList:function() {
+                  $.ajax({
+                      url:"http://test.api.htxq.net/cactus/customer/getCreditDetail?customerId=68f8d12b-25df-460e-b9c3-38e1f8cd4457&token=B7763FA836C7D5CBE1508C001F861EDB_0",
+                      type: "GET",
+                      dataType: 'json',
+                      data: {},
+                      success: function (data) {
+                          if (data.code == '000000') {
+                              if (data.data.score < 0) {
+                                  vm.score = 0
+                              } else {
+                                  vm.score = data.data.score;
+                              }
+                              if (data.data.list.length > 0) {
+                                  vm.detailList = data.data.list;
+                              } else {
+                                  vm.detailList.push({trainTitle:'暂无扣分记录'})
+                              }
+                          }
+                      }
+                  })
+              }
+            }
         })
     </script>
 </body>
