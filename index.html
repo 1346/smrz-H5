@@ -16,8 +16,8 @@
     <script>
         mui.init();
     </script>
-    <!--<script src="https://cdnm3.17shanyuan.com/static/js/debug/eruda.js"></script>-->
-    <!--<script>eruda.init();</script>-->
+    <script src="https://cdnm3.17shanyuan.com/static/js/debug/eruda.js"></script>
+    <script>eruda.init();</script>
 </head>
 <body>
 <section id="main" v-cloak>
@@ -51,10 +51,10 @@
                 </div>
             </div>
             <div class="real-service">
-                <span class="checked" :class="{'is-checked':isCheck,'no-checked':!isCheck}" @tap="isCheck = !isCheck"></span><span>我已同意</span><span style="color:#c1a152">《实名认证与隐私安全保护》</span><span>协议</span>
+                <span class="checked" :class="{'is-checked':isCheck,'no-checked':!isCheck}" @tap="isCheck = !isCheck"></span><span>我已同意</span><span style="color:#c1a152"><a style="color:#c1a152" href="http://static.htxq.net/License/certification.html">《实名认证与隐私安全保护》</a></span><span>协议</span>
             </div>
             <div class="real-submit">
-                <div class="mui-btn" @tap="submit">确认提交</div>
+                <div class="mui-btn" @click="submit">确认提交</div>
             </div>
         </form>
         <!--<div class="real-footer"></div>-->

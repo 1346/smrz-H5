@@ -54,10 +54,13 @@ var vm = new Vue({
                     data: formData,
                     success: function(data) {
                         if (data.code == '000000') {
-                            console.log('提交成功！！！');
-                            window.location.href = '/h5/Verified/html/success.html';
+                            debugger
+                            window.location.href = '/h5/Verified/html/success.html?id='+getLocationHrefPara('id')+'&uno='+getLocationHrefPara('uno');
+                        } else {
+                            mui.toast(data.text, { duration: 'long', type: 'div' })
                         }
                     }
+
                 })
             }
         }

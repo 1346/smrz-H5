@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>信用分</title>
-    <link rel="stylesheet" href="../css/mui.min.css" />
-    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../Credit/css/mui.min.css" />
+    <link rel="stylesheet" href="../Credit/css/index.css" />
     <script type="text/javascript" src="https://htxq.oss-cn-beijing.aliyuncs.com/resources/js/vue.min.js"></script>
-    <script type="text/javascript" src="../js/public.js"></script>
+    <script type="text/javascript" src="../Credit/js/public.js"></script>
+    <script src="https://cdnm3.17shanyuan.com/static/js/debug/eruda.js"></script>
+    <script>eruda.init();</script>
     <script>
         var now = new Date().getTime();
         document.write('<script language="javascript" src="https://htxq.oss-cn-beijing.aliyuncs.com/resources/js/jquery-2.0.3.min.js?t=' + now + '"><\/script\>');
     </script>
-    <script type="text/javascript" src="../js/mui.min.js"></script>
-    <script type="text/javascript" src="../js/login_public_750.js"></script>
-    <script src="https://cdnm3.17shanyuan.com/static/js/debug/eruda.js"></script>
-    <script>eruda.init();</script>
+    <script type="text/javascript" src="../Credit/js/mui.min.js"></script>
+    <script type="text/javascript" src="../Credit/js/login_public_750.js"></script>
     <script>
         mui.init();
     </script>
@@ -31,7 +31,7 @@
             /*background-color: #e1b95f;*/
             text-align: center;
             padding: 0.92rem 0;
-            background:url("../images/background.png") no-repeat;
+            background:url("../Credit/images/background.png") no-repeat;
         }
 
         .header-num {
@@ -162,9 +162,11 @@
             methods:{
               getList:function() {
                   $.ajax({
-                      url:'http://test.api.htxq.net/cactus/customer/getCreditDetail?customerId='+getCookie('user')+'&token='+localStorage.getItem('HTXQToken'),
+//                      url:'http://test.api.htxq.net/cactus/customer/getCreditDetail?customerId='+getLocationHrefPara('customerId')+'&token='+localStorage.getItem('HTXQToken'),
+                      url:'http://test.api.htxq.net/cactus/customer/getCreditDetail?customerId='+getLocationHrefPara('customerId'),
                       type: "GET",
                       dataType: 'json',
+                      crossDomain:true,
                       data: {},
                       success: function (data) {
                           if (data.code == '000000') {

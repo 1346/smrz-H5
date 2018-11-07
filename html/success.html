@@ -6,6 +6,7 @@
     <title>认证成功</title>
     <link rel="stylesheet" href="../css/mui.min.css" />
     <script type="text/javascript" src="../js/public.js"></script>
+    <script type="text/javascript" src="../js/login_public_750.js"></script>
     <script>
         var now = new Date().getTime();
         document.write('<script language="javascript" src="https://htxq.oss-cn-beijing.aliyuncs.com/resources/js/jquery-2.0.3.min.js?t=' + now + '"><\/script\>');
@@ -52,12 +53,12 @@
         <img src="../images/success.png" />
         <div class="image-txt">认证成功</div>
     </div>
-    <div class="mui-btn">确定</div>
+    <div class="mui-btn" onclick="fromTo()">确定</div>
 </section>
 <script>
-    $('.mui-btn').on('tap',function(){
-        window.location.href = '/h5/WXactivity/train_detail.html'
-    })
+    function fromTo() {
+        window.location.href = '/h5/WXactivity/train_detail.html?id='+getLocationHrefPara('id')+'&uno='+getLocationHrefPara('uno')
+    }
 </script>
 </body>
 </html>
